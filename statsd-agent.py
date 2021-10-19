@@ -75,7 +75,7 @@ def memory():
 def network():
     c = statsd.StatsClient('localhost', 8125, prefix='system.network')
     while True:
-        net_value = psutil.psutil.net_io_counters()
+        net_value = psutil.net_io_counters()
         c.gauge('bytes_sent', net_value.bytes_sent)
         c.gauge('bytes_recv', net_value.bytes_recv)
         c.gauge('packets_sent', net_value.packets_sent)
